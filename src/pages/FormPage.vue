@@ -2,7 +2,9 @@
   <div class="form-page container" v-show="isAuthorized === false">
     <div class="card">
       <div class="card-header">
-        <h1>{{ formType === "login" ? "Login" : "Signup" }}</h1>
+        <h1 class="text-center">
+          {{ formType === "login" ? "Login" : "Signup" }} Form
+        </h1>
       </div>
       <div class="card-body">
         <login-form v-show="formType === 'login'" @switch="handleSwitch" />
@@ -29,7 +31,7 @@ export default {
       formType: "signup",
     };
   },
-  beforeCreate() {
+  created() {
     appAuth.auth.onAuthStateChanged((user) => {
       if (user) {
         this.isAuthorized = true;
@@ -48,12 +50,9 @@ export default {
 </script>
 
 <style>
-.form-page .card {
+.form-page > * {
   width: 400px;
   max-width: 95%;
-}
-.form-group {
-  margin-bottom: 1rem;
 }
 .error-msg,
 .success-msg {

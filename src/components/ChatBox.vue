@@ -2,9 +2,7 @@
   <div class="chat-box card">
     <div class="card-header">
       <!-- current user -->
-      <h3 class="text-center">
-        <em class="text-danger">{{ displayName }}</em>
-      </h3>
+      <h3 class="text-center">@{{ displayName }}</h3>
     </div>
     <!-- chat list -->
     <chat-list />
@@ -33,7 +31,6 @@ export default {
     },
   },
   methods: {
-    // chat-form error handler
     handleFormError(err) {
       console.log(err.message);
       return err;

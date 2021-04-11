@@ -11,18 +11,17 @@ const router = new VueRouter({
   routes: [
     { path: "*", redirect: { name: "form-page" } },
     {
-      path: "/chat",
+      path: "/",
       name: "chat-page",
       component: ChatPage,
-      props: true
+      props: true,
     },
     {
       path: "/auth",
       name: "form-page",
       component: FormPage,
-      props: true
-    }
-  ]
+    },
+  ],
 });
 
 export default router;

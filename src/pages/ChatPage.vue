@@ -18,17 +18,19 @@ export default {
   },
   data() {
     return {
-      isAuthorized: null,
-      displayName: this.$route.params.username || "",
-      verifiedUser: null,
+      isAuthorized: false,
+      displayName: "",
+      emailVerified: false,
     };
   },
-  beforeCreate() {
+  created() {
     store.auth.onAuthStateChanged((user) => {
       if (user) {
         this.isAuthorized = true;
-        this.displayName = user.displayName || user.email || "";
-        this.verifiedUser = user.emailVerified;
+        this.displayName = String(
+          this.$route.params.username || user.displayName
+        );
+        this.emailVerified = user.emailVerified;
       } else {
         this.isAuthorized = false;
         this.$router.replace({ name: "form-page" }).catch(() => {});
@@ -42,6 +44,3 @@ export default {
   },
 };
 </script>
-
-<style>
-</style>
