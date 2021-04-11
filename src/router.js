@@ -12,14 +12,14 @@ const router = new VueRouter({
     { path: "*", redirect: { name: "form-page" } },
     {
       path: "/",
+      name: "form-page",
+      component: FormPage,
+    },
+    {
+      path: "/chat",
       name: "chat-page",
       component: ChatPage,
       props: true,
-    },
-    {
-      path: "/auth",
-      name: "form-page",
-      component: FormPage,
     },
   ],
 });
