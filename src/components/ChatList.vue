@@ -1,12 +1,12 @@
 <template>
-  <ul class="chat-list" v-show="arr">
+  <ul class="chat-list">
     <chat-item v-for="obj in arr" :obj="obj" :key="obj.id" />
   </ul>
 </template>
 
 <script>
-import store from "../store/firestore";
-import appAuth from "../store/auth";
+import { messagesRef } from "../store/firestore";
+import { auth } from "../store/auth";
 import ChatItem from "./ChatItem";
 
 export default {
@@ -20,7 +20,7 @@ export default {
     };
   },
   created() {
-    appAuth.auth.onAuthStateChanged((user) => {
+    auth.onAuthStateChanged((user) => {
       if (user) {
         this.handleRealTimeData();
       }
@@ -28,21 +28,35 @@ export default {
   },
   methods: {
     handleRealTimeData() {
-      // real-time messages
-      store.messagesRef.orderBy("created_at").onSnapshot((snapshot) => {
-        snapshot.docChanges().forEach((change) => {
-          if (change.type === "added") {
-            const data = change.doc.data();
-            this.arr.push({
-              id: change.doc.id,
-              ...data,
+      messagesRef
+        .orderBy("created_at")
+        // .limitToLast(100)
+        .onSnapshot(
+          (snapshot) => {
+            snapshot.docChanges().forEach((change) => {
+              if (change.type === "added") {
+                const data = change.doc.data();
+                this.arr.push({
+                  id: change.doc.id,
+                  ...data,
+                });
+              } else if (change.type === "modified") {
+                const index = this.arr.findIndex(
+                  (obj) => obj.id === change.doc.id
+                );
+                const data = change.doc.data();
+                this.arr[index] = {
+                  id: change.doc.id,
+                  ...data,
+                };
+              } else {
+                // removed
+                this.arr = this.arr.filter((obj) => obj.id !== change.doc.id);
+              }
             });
-          } else if (change.type === "removed") {
-            const id = change.doc.id;
-            this.arr = this.arr.filter((obj) => obj.id !== id);
-          }
-        });
-      });
+          },
+          (err) => err
+        );
     },
   },
 };
@@ -56,6 +70,5 @@ export default {
   height: 50vh;
   max-height: 50vh;
   overflow-y: auto;
-  padding-bottom: 5px;
 }
 </style>

@@ -26,7 +26,7 @@
 
 <script>
 import { formatDistanceToNow } from "date-fns";
-import appAuth from "../store/auth";
+import { auth } from "../store/auth";
 import { deleteMessage, editMessage } from "../store/firestore";
 import DefaultAvatar from "./common/DefaultAvatar";
 
@@ -58,9 +58,9 @@ export default {
       }
     },
     ownMessageCheck() {
-      appAuth.auth.onAuthStateChanged((user) => {
+      auth.onAuthStateChanged((user) => {
         if (user) {
-          if (appAuth.auth.currentUser.uid === this.obj.author_id) {
+          if (auth.currentUser.uid === this.obj.author_id) {
             this.ownMessage = true;
           } else {
             this.ownMessage = false;

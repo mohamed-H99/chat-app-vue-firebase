@@ -81,7 +81,7 @@
       </div>
       <a href="#" @click="handleForget" class="forget-link">Forget password?</a>
     </div>
-    <p class="mb-2">
+    <p>
       Dont't have an account ?
       <a href="#" @click="handleSwitch">Signup</a>
     </p>
@@ -130,6 +130,9 @@ export default {
               username: cred.user.displayName,
               avatar_url: cred.user.photoURL,
             },
+            query: {
+              displayName: cred.user.displayName,
+            },
           })
           .catch(() => {});
       } catch (err) {
@@ -156,6 +159,7 @@ export default {
       this.errorMsg = msg;
     },
     handleSuccessMessage(msg) {
+      this.handleErrorMessage("");
       this.successMsg = msg;
       setTimeout(() => {
         this.successMsg = "";

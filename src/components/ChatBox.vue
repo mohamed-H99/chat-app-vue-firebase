@@ -24,12 +24,7 @@ export default {
     ChatList,
     ChatForm,
   },
-  props: {
-    displayName: {
-      type: String,
-      default: null,
-    },
-  },
+  props: ["displayName"],
   methods: {
     handleFormError(err) {
       console.log(err.message);

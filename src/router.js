@@ -14,6 +14,7 @@ const router = new VueRouter({
       path: "/",
       name: "form-page",
       component: FormPage,
+      props: true,
     },
     {
       path: "/chat",

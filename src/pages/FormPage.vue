@@ -2,9 +2,9 @@
   <div class="form-page container" v-show="isAuthorized === false">
     <div class="card">
       <div class="card-header">
-        <h1 class="text-center">
+        <h2 class="text-center fw-bold">
           {{ formType === "login" ? "Login" : "Signup" }} Form
-        </h1>
+        </h2>
       </div>
       <div class="card-body">
         <login-form v-show="formType === 'login'" @switch="handleSwitch" />
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import appAuth from "../store/auth";
+import { auth } from "../store/auth";
 import SignupForm from "../components/forms/SignupForm";
 import LoginForm from "../components/forms/LoginForm";
 
@@ -32,7 +32,7 @@ export default {
     };
   },
   created() {
-    appAuth.auth.onAuthStateChanged((user) => {
+    auth.onAuthStateChanged((user) => {
       if (user) {
         this.isAuthorized = true;
         this.$router.replace({ name: "chat-page" }).catch(() => {});
@@ -53,6 +53,9 @@ export default {
 .form-page > * {
   width: 400px;
   max-width: 95%;
+}
+.form-group {
+  margin-bottom: 0.5rem;
 }
 .error-msg,
 .success-msg {

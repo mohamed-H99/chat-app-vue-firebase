@@ -1,6 +1,8 @@
 <template>
   <div class="mb-3">
-    <label for="formFile" class="form-label">Upload avatar (optional)</label>
+    <label for="formFile" class="form-label mb-0"
+      >Upload avatar (optional)</label
+    >
     <input
       class="form-control form-control-sm"
       type="file"
@@ -12,7 +14,7 @@
 </template>
 
 <script>
-import appStorage, { uploadAvatar } from "../../store/storage";
+import { storage, uploadAvatar } from "../../store/storage";
 import ProgressBar from "../common/ProgressBar";
 
 export default {
@@ -22,7 +24,7 @@ export default {
   },
   data() {
     return {
-      uploadProgress: 0,
+      uploadProgress: 10,
       uploading: false,
     };
   },
@@ -33,7 +35,7 @@ export default {
         this.uploading = true;
         const uploadTask = await uploadAvatar(file);
         this.uploadProgress = uploadTask.bytesTransferred;
-        const avatarsRef = appStorage.storageRef.child(`avatar/${file.name}`);
+        const avatarsRef = storage.ref().child(`avatar/${file.name}`);
         avatarsRef.getDownloadURL().then((downloadURL) => {
           this.$emit("uploaded", downloadURL);
         });

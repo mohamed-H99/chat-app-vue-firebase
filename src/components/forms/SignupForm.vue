@@ -157,6 +157,9 @@ export default {
               username: this.formData.username,
               avatar_url: this.formData.avatar_url,
             },
+            query: {
+              displayName: this.formData.username,
+            },
           })
           .catch(() => {});
         e.target.reset();
@@ -165,6 +168,7 @@ export default {
       }
     },
     handleAvatar(downloadURL) {
+      this.clearMessages();
       this.handleSuccessMessage("Uploaded successfully!");
       this.formData.avatar_url = downloadURL;
     },
@@ -182,6 +186,9 @@ export default {
               username: cred.user.displayName,
               avatar_url: cred.user.photoURL,
             },
+            query: {
+              displayName: cred.user.displayName,
+            },
           })
           .catch(() => {});
       } catch (err) {
@@ -197,6 +204,7 @@ export default {
       this.errorMsg = msg;
     },
     handleSuccessMessage(msg) {
+      this.handleErrorMessage("");
       this.successMsg = msg;
       setTimeout(() => {
         this.successMsg = "";

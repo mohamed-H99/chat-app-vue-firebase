@@ -25,6 +25,4 @@ export const editMessage = (id, newData) => {
   return messagesRef.doc(id).update(newData);
 };
 
-export default {
-  messagesRef,
-};
+export { messagesRef };

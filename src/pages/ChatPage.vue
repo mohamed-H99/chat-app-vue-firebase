@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       isAuthorized: false,
-      displayName: "",
+      displayName: this.$route.params.username || this.$route.query.displayName,
       emailVerified: false,
     };
   },
@@ -27,9 +27,7 @@ export default {
     store.auth.onAuthStateChanged((user) => {
       if (user) {
         this.isAuthorized = true;
-        this.displayName = String(
-          this.$route.params.username || user.displayName
-        );
+        if (user.displayName) this.displayName = user.displayName;
         this.emailVerified = user.emailVerified;
       } else {
         this.isAuthorized = false;
