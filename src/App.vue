@@ -27,7 +27,7 @@ export default {
   align-items: center;
   padding: 0.5rem 0;
 }
-.card {
+/* .card {
 }
 .card-header {
 }
@@ -36,5 +36,5 @@ export default {
 .card-footer {
 }
 .btn {
-}
+} */
 </style>
