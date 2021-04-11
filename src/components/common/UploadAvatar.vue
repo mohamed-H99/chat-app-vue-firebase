@@ -7,7 +7,7 @@
       @change="handleFile"
     />
     <!-- uploading progress -->
-    <progress-bar :value="uploadProgress" />
+    <progress-bar :value="uploadProgress" v-show="uploading" />
   </div>
 </template>
 
@@ -23,19 +23,22 @@ export default {
   data() {
     return {
       uploadProgress: 0,
+      uploading: false,
     };
   },
   methods: {
     async handleFile(e) {
       const file = e.target.files[0];
       try {
+        this.uploading = true;
         const uploadTask = await uploadAvatar(file);
+        this.uploadProgress = uploadTask.bytesTransferred;
         const avatarsRef = appStorage.storageRef.child(`avatar/${file.name}`);
         avatarsRef.getDownloadURL().then((downloadURL) => {
           this.$emit("uploaded", downloadURL);
         });
-        this.uploadProgress = uploadTask.bytesTransferred;
       } catch (err) {
+        this.uploading = false;
         this.$emit("err", err);
       }
     },

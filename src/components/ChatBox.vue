@@ -1,5 +1,5 @@
 <template>
-  <div class="chat-box card" v-show="displayName">
+  <div class="chat-box card">
     <div class="card-header">
       <!-- current user -->
       <h3 class="text-center">
@@ -11,7 +11,7 @@
 
     <footer class="chat-footer">
       <!-- chat form -->
-      <chat-form @error="handleError" />
+      <chat-form @error="handleFormError" />
     </footer>
   </div>
 </template>
@@ -34,8 +34,9 @@ export default {
   },
   methods: {
     // chat-form error handler
-    handleError(err) {
+    handleFormError(err) {
       console.log(err.message);
+      return err;
     },
   },
 };

@@ -18,16 +18,18 @@ export default {
   },
   data: () => ({
     isAuthorized: null,
-    displayName: this.$route.params.username,
+    displayName: this.$route.params.username || "",
+    verifiedUser: null,
   }),
   beforeCreate() {
     store.auth.onAuthStateChanged((user) => {
       if (user) {
         this.isAuthorized = true;
-        this.displayName = user.displayName || user.email;
+        this.displayName = user.displayName || user.email || "";
+        this.verifiedUser = user.emailVerified;
       } else {
         this.isAuthorized = false;
-        this.$router.replace("/auth").catch(() => {});
+        this.$router.replace({ name: "form-page" }).catch(() => {});
       }
     });
   },

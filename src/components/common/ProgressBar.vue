@@ -1,5 +1,5 @@
 <template>
-  <div class="progress mt-2" v-show="value">
+  <div class="progress mt-2">
     <div
       class="progress-bar progress-bar-striped"
       :class="{

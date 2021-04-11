@@ -165,6 +165,7 @@ export default {
       }
     },
     handleAvatar(downloadURL) {
+      this.handleSuccessMessage("Uploaded successfully!");
       this.formData.avatar_url = downloadURL;
     },
     handleAvatarError(err) {

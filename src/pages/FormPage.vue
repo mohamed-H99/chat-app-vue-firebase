@@ -2,7 +2,7 @@
   <div class="form-page container" v-show="isAuthorized === false">
     <div class="card">
       <div class="card-header">
-        <h1>{{ formType === "login" ? "LogIn" : "SignUp" }} Form</h1>
+        <h1>{{ formType === "login" ? "Login" : "Signup" }}</h1>
       </div>
       <div class="card-body">
         <login-form v-show="formType === 'login'" @switch="handleSwitch" />
