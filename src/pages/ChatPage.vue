@@ -16,11 +16,13 @@ export default {
   components: {
     ChatBox,
   },
-  data: () => ({
-    isAuthorized: null,
-    displayName: this.$route.params.username || "",
-    verifiedUser: null,
-  }),
+  data() {
+    return {
+      isAuthorized: null,
+      displayName: this.$route.params.username || "",
+      verifiedUser: null,
+    };
+  },
   beforeCreate() {
     store.auth.onAuthStateChanged((user) => {
       if (user) {
