@@ -83,7 +83,7 @@
     </div>
     <p>
       Dont't have an account ?
-      <a href="#" @click="handleSwitch">Signup</a>
+      <a href="#" @click="handleSwitch">Join us</a>
     </p>
     <button type="submit" class="btn btn-secondary">Login</button>
   </form>
