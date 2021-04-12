@@ -7,7 +7,7 @@
       placeholder="Type here.."
       autofocus
     />
-    <button type="submit" class="btn btn-danger send-btn">
+    <button type="submit" class="btn send-btn" aria-label="send message">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"
@@ -59,6 +59,8 @@ export default {
   padding-right: 2.5rem;
 }
 .send-btn {
+  background-color: var(--bs-indigo);
+  color: var(--bs-white);
   position: absolute;
   top: 50%;
   right: 0.3rem;

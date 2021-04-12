@@ -1,5 +1,5 @@
 <template>
-  <div class="form-page container" v-show="isAuthorized">
+  <div class="form-page container" v-show="!isAuthorized">
     <div class="card">
       <div class="card-header">
         <h2 class="text-center fw-bold">

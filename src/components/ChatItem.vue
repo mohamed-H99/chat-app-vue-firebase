@@ -155,9 +155,8 @@ export default {
   padding: 0.5rem 1rem;
   width: fit-content;
 }
-.chat-content .chat-name,
-.chat-content .chat-delete {
-  color: var(--bs-gray);
+.chat-content .chat-name {
+  color: var(--bs-gray-dark);
   font-size: 0.7rem;
 }
 .chat-content .chat-text {
@@ -200,7 +199,7 @@ export default {
   text-align: right;
 }
 .own-message .chat-content {
-  background: var(--bs-danger);
+  background: var(--bs-indigo);
   color: var(--bs-white);
   border-radius: calc(0.75rem - 3px);
   border-top-right-radius: 0;
