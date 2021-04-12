@@ -70,5 +70,6 @@ export default {
   height: 50vh;
   max-height: 50vh;
   overflow-y: auto;
+  scroll-behavior: smooth;
 }
 </style>

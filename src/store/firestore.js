@@ -2,7 +2,7 @@ import firebase from "firebase/app";
 import store from "../firebase";
 
 // firestore Refs
-const messagesRef = store.db.collection("messages");
+export const messagesRef = store.db.collection("messages");
 
 // fun[0] adding message
 export const addMessage = (value) => {
@@ -24,5 +24,3 @@ export const deleteMessage = (id) => {
 export const editMessage = (id, newData) => {
   return messagesRef.doc(id).update(newData);
 };
-
-export { messagesRef };

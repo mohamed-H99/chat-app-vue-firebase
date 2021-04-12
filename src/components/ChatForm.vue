@@ -7,7 +7,7 @@
       placeholder="Type here.."
       autofocus
     />
-    <button type="submit" class="btn btn-dark send-btn">
+    <button type="submit" class="btn btn-danger send-btn">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"
