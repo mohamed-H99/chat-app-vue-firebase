@@ -4,6 +4,7 @@
       >Upload avatar (optional)</label
     >
     <input
+      id="formFile"
       class="form-control form-control-sm"
       type="file"
       @change="handleFile"
