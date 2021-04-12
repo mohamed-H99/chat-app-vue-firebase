@@ -55,7 +55,7 @@ export default {
   max-width: 95%;
 }
 .form-group {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 .error-msg,
 .success-msg {

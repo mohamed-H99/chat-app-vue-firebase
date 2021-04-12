@@ -55,7 +55,7 @@
     <!-- email -->
     <div class="form-group">
       <div class="input-group flex-nowrap">
-        <span class="input-group-text" id="addon-wrapping-email">
+        <span class="input-group-text" id="addon-wrapping-signup-email">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -74,7 +74,7 @@
           class="form-control"
           placeholder="Email address"
           aria-label="Email address"
-          aria-describedby="addon-wrapping-email"
+          aria-describedby="addon-wrapping-signup-email"
           v-model="formData['email']"
           required
         />
@@ -83,7 +83,7 @@
     <!-- password -->
     <div class="form-group">
       <div class="input-group flex-nowrap">
-        <span class="input-group-text" id="addon-wrapping-password">
+        <span class="input-group-text" id="addon-wrapping-signup-password">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -102,7 +102,7 @@
           class="form-control"
           placeholder="Create Password"
           aria-label="Create Password"
-          aria-describedby="addon-wrapping-password"
+          aria-describedby="addon-wrapping-signup-password"
           v-model="formData['password']"
           required
         />
