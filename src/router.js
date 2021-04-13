@@ -1,15 +1,14 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-// lazy-loading routes
+
+import FormPage from "./pages/FormPage";
 const ChatPage = () => import("./pages/ChatPage");
-const FormPage = () => import("./pages/FormPage");
 
 Vue.use(VueRouter);
 
 const router = new VueRouter({
   mode: "history",
   routes: [
-    { path: "*", redirect: { name: "form-page" } },
     {
       path: "/",
       name: "form-page",
@@ -22,6 +21,7 @@ const router = new VueRouter({
       component: ChatPage,
       props: true,
     },
+    { path: "*", redirect: { name: "form-page" } },
   ],
 });
 
